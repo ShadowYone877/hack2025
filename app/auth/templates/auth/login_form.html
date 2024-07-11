@@ -15,16 +15,27 @@
     <h3 class="us">Usuario</h3>
     <div>
         <i class="access"></i>
-        <form>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
 
             <i class="fa-solid fa-user"></i>
+            {{ form.email.label }}
+            {{ form.email }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
             <!--fas indica que se usando la categoría "Solid" de Font Awesome y fa-user es el nombre de nuestro icono que stamos utilizando-->
-            <label><input type="text" name="Nombre" placeholder="Nombre"></label>
-            <!--placeholder se refiere a texto adicional-->
+         <!--<label><input type="text" name="Nombre" placeholder="Nombre"></label> 
+            placeholder se refiere a texto adicional-->
 
             <br><i class="fa-solid fa-lock"></i>
-            <label><input type="text" password="Contraseña" placeholder="Contraseña"></label>
-
+            {{ form.password.label }}
+            {{ form.password }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            <!--<label><input type="text" password="Contraseña" placeholder="Contraseña"></label>-->
+            {{ form.submit() }}
         </form>
 
         <div class="remember">
@@ -38,7 +49,7 @@
         <h3><button class="butt">Iniciar sesion</button></h3>
     </div>
 </div>
-<form action="" method="post" novalidate>
+<!--<form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <div>
         {{ form.email.label }}
@@ -60,5 +71,5 @@
     </div>
 </form>
 </div>
-<div>¿No tienes cuenta? <a href="{{ url_for('auth.show_signup_form') }}">Regístrate</a></div>
+<div>¿No tienes cuenta? <a href="{{ url_for('auth.show_signup_form') }}">Regístrate</a></div>-->
 {% endblock %}

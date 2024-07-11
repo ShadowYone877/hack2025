@@ -1,5 +1,3 @@
- 
-
 from flask import (render_template, redirect, url_for,
                    request, current_app)
 from flask_login import current_user, login_user, logout_user
@@ -33,11 +31,11 @@ def show_signup_form():
             user.set_password(password)
             user.save()
             # Enviamos un email de bienvenida
-            send_email(subject='Bienvenid@ al miniblog',
+            send_email(subject='Bienvenid@ al projectUGT',
                        sender=current_app.config['DONT_REPLY_FROM_EMAIL'],
                        recipients=[email, ],
-                       text_body=f'Hola {name}, bienvenid@ al miniblog de Flask',
-                       html_body=f'<p>Hola <strong>{name}</strong>, bienvenid@ al miniblog de Flask</p>')
+                       text_body=f'Hola {name}, bienvenid@ al project de Flask',
+                       html_body=f'<p>Hola <strong>{name}</strong>, bienvenid@ al project de Flask</p>')
             # Dejamos al usuario logueado
             login_user(user, remember=True)
             next_page = request.args.get('next', None)
