@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for("static", filename="base.css") }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/hands.jpg') }}">
+    <link rel="stylesheet preload" href="{{ url_for('static', filename='css/base.css' ) }}">
+    <!-- <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome6/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome6/css/brands.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome6/css/solid.css') }}">
+   
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/22.1.4/css/dx.common.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/22.1.4/css/dx.light.css" /> -->
+    <!-- <script src="https://cdn3.devexpress.com/jslib/22.1.4/js/dx.all.js"></script> -->
 </head>
+
 <body>
-<div>
-    <ul class="user-info">
-        <li><a href="{{ url_for('public.index') }}">Home</a></li>
-        {% if current_user.is_anonymous %}
-            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-            <li> | </li>
-            <li><a href="{{ url_for('auth.show_signup_form') }}">Registrar</a></li>
-        {% else %}
-            <li>{{ current_user.name }}</li>
-            {% if current_user.is_admin %}
-                <li> | </li>
-                <li><a href="{{ url_for('admin.index') }}">Admin</a></li>
-            {% endif %}
-            <li> | </li>
-            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
-        {% endif %}
-    </ul>
-</div>
-{% block content %}{% endblock %}
+    {% block header %}{% endblock %}
+    {% block content %}{% endblock %} {% block javascript %}
+    <!-- <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script> -->
+    {% endblock %}
 </body>
+
 </html>

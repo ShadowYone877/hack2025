@@ -1,0 +1,92 @@
+.Bv {
+    /*bienvenido... inicio militantes... Crear cuenta*/
+    text-align: left;
+    /*la alineacion del texto*/
+    font-family: Arial, sans-serif;
+    color: aliceblue;
+    /*color */
+}
+
+.us {
+    /*el texto de usuario*/
+    text-align: center;
+    color: rgba(172, 22, 64, 0.918);
+}
+
+.cont {}
+
+.Bv > .cont {
+    position: relative;
+    left: 500px;
+    top: 50px;
+    border-radius: 7px;
+    width: 90%;
+    /*ancho del elemento*/
+    max-width: 300px;
+    background: rgba(172, 22, 64, 0.918);
+    padding: 15px;
+    /*es el espacio que existe entre el texto y recuadro*/
+    align-items: center;
+
+}
+
+.contenedor {}
+
+.contenedor {
+    border-radius: 7px;
+    position: relative;
+    left: 500px;
+    top: 50px;
+    text-align: center;
+    color: rgba(172, 22, 64, 0.918);
+    width: 90%;
+    max-width: 300px;
+    background: #fff;
+    padding: 15px;
+    align-items: center;
+}
+
+input[type=text] {
+    /*input sobre el nombre y contraseña del usuario*/
+    margin-top: 10px;
+    /*es el margen que tiene un boton de otro*/
+    padding: 5px;
+    width: 60%;
+    font-size: 11px;
+    /*es el acercamiento de la letra */
+    font-weight: 6px;
+    /*el grosor de la letra*/
+    background-color: rgba(172, 22, 64, 0.918);
+
+    background-image: url('');
+    /*intento de poner el icono dentro del boton */
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+
+input::placeholder {
+    /*input del texto provicional(placeholder)*/
+    color: white;
+    font-size: 11px;
+
+}
+
+.remember {
+    font-size: 12px;
+    /*es el acercamiento de la letra */
+    margin-top: 15px;
+
+}
+
+.butt {
+    /*boton de iniciar sesion*/
+    text-align: center;
+    background-color: rgba(172, 22, 64, 0.918);
+    color: white;
+
+}
+
+.fas.fa-check-circle {
+    color: rgba(172, 22, 64, 0.918);
+}

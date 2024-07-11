@@ -8,16 +8,19 @@ from app import db
 
 class User(db.Model, UserMixin):
 
-    __tablename__ = 'blog_user'
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
+    lastname = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(256), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
-    def __init__(self, name, email):
+    def __init__(self, name, lastname, email):
         self.name = name
+        self.lastname = lastname
+
         self.email = email
 
     def __repr__(self):
