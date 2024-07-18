@@ -26,7 +26,8 @@ def index():
     if current_user.is_authenticated:
         return redirect(url_for('admin.index'))
     else:
-        return redirect(url_for('auth.login'))
+        # return redirect(url_for('auth.login'))
+        return render_template('public/index.html')
 
 
 # @public_bp.route("/p/<string:slug>/", methods=['GET', 'POST'])

@@ -13,7 +13,6 @@
     color: rgba(172, 22, 64, 0.918);
 }
 
-.cont {}
 
 .Bv > .cont {
     position: relative;
@@ -30,7 +29,6 @@
 
 }
 
-.contenedor {}
 
 .contenedor {
     border-radius: 7px;
@@ -46,23 +44,21 @@
     align-items: center;
 }
 
-input[type=text] {
+.form-control-text {
     /*input sobre el nombre y contraseña del usuario*/
     margin-top: 10px;
     /*es el margen que tiene un boton de otro*/
-    padding: 5px;
+    padding: 3px 2px;
     width: 60%;
+    height: 25px;
     font-size: 11px;
     /*es el acercamiento de la letra */
     font-weight: 6px;
     /*el grosor de la letra*/
-    background-color: rgba(172, 22, 64, 0.918);
-
-    background-image: url('');
+    background-color: var(--white);
     /*intento de poner el icono dentro del boton */
     background-position: 10px 10px;
     background-repeat: no-repeat;
-    padding-left: 40px;
 }
 
 input::placeholder {
@@ -84,6 +80,7 @@ input::placeholder {
     text-align: center;
     background-color: rgba(172, 22, 64, 0.918);
     color: white;
+    padding: 10px;
 
 }
 

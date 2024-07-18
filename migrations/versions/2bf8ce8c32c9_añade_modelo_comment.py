@@ -18,6 +18,9 @@ def upgrade():
     sa.Column('lastname', sa.String(length=80), nullable=False),
     sa.Column('email', sa.String(length=256), nullable=False),
     sa.Column('password', sa.String(length=128), nullable=False),
+    sa.Column('local_phone', sa.String(length=10), nullable=False),
+    sa.Column('mobile_phone', sa.String(length=10), nullable=False),
+    sa.Column('clave_elector', sa.String(length=128), nullable=False),
     sa.Column('is_admin', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
