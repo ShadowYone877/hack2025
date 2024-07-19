@@ -1,4 +1,5 @@
 @import url(login.css);
+@import url(inicio.css);
 :root {
     --primary-color: #231f20;
     --secondary-color: rgba(172, 22, 64, 0.918);

@@ -1,12 +1,12 @@
 {% extends "base_template.html" %}
-{% block title %}Inicio{% endblock %}
+{% tittle %}Inicio{% endblock %}
 {% block content %}
 <main>
         <section class="seccionGral">
             <!-- * Bloque para iniciar sesion-->
             <section class="login">
               <h1 class="titulo">Militancia</h1>
-            <button><a href="{{ url_for('auth.login') }}">Iniciar sesión</a></button>
+            <button><a href="{{ url_for('login') }}">Iniciar sesión</a></button>
             </p>
             <button class="secButton">Registrarse</button>
           </section>
