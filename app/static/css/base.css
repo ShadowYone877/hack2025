@@ -64,4 +64,7 @@ sup,
 sub {
     line-height: 0
 }
+tbody > tr > td > a{
+    padding-right: 10px;
+}
 
