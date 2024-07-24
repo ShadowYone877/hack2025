@@ -104,15 +104,16 @@ def delete_post(post_id):
 
 @admin_bp.route("/admin/users/")
 @login_required
-@admin_required
+@gestorDBA_required
 def list_users():
     users = User.get_all()
+    print(users)
     return render_template("admin/users.html", users=users)
 
 
 @admin_bp.route("/admin/user/<int:user_id>/", methods=['GET', 'POST'])
 @login_required
-@admin_required
+@gestorDBA_required
 def update_user_form(user_id):
     # Aquí entra para actualizar un usuario existente
     user = User.get_by_id(user_id)

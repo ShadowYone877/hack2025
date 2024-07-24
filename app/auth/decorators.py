@@ -20,7 +20,7 @@ def gestorDBA_required(f):
     @wraps(f)
     def decorated_function(*args, **kws):
         is_gestorDBA = getattr(current_user, 'rol_id', 1)
-        if is_gestorDBA not in [1]:
+        if is_gestorDBA not in [1,5]:
             abort(401)
         return f(*args, **kws)
     return decorated_function
