@@ -19,9 +19,10 @@ class User(db.Model, UserMixin):
     key_elector = db.Column(db.String(28), nullable=True)
     status = db.Column(db.Integer, default=1)
     password = db.Column(db.String(256), nullable=False)
+    rol_id = db.Column(db.Integer, db.ForeignKey('Rol.id', ondelete='CASCADE'), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
-    def __init__(self, name, lastname,lastname2, email,local_phone,mobile_phone,key_elector,status):
+    def __init__(self, name, lastname,lastname2, email,local_phone,mobile_phone,key_elector,status,rol_id):
         self.name = name
         self.lastname = lastname
         self.lastname2 = lastname2
@@ -30,6 +31,7 @@ class User(db.Model, UserMixin):
         self.mobile_phone = mobile_phone
         self.key_elector = key_elector
         self.status = status
+        self.rol_id = rol_id
 
     def __repr__(self):
         return f'<User {self.email}>'

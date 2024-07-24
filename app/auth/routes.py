@@ -8,36 +8,47 @@ from app.common.mail import send_email
 from . import auth_bp
 from .forms import SignupForm, LoginForm
 from .models import User
+from app.models import Rol
 
 
 @auth_bp.route("/signup/", methods=["GET", "POST"])
 def show_signup_form():
-    if current_user.is_authenticated:
-        return redirect(url_for('public.index'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('public.index'))
+    # for rol in Rol.query.all():
+    #     print(rol.rol_name)
     form = SignupForm()
+    form.rol.choices = [(rol.id,rol.rol_name) for rol in Rol.query.all()]
     error = None
     if form.validate_on_submit():
         name = form.name.data
         lastname = form.lastname.data
+        lastname2 = form.lastname2.data
+        local_phone = form.local_phone.data
+        mobile_phone = form.mobile_phone.data
+        key_lector = form.key_elector.data
+        status = 1
+        rol=form.rol.data
         email = form.email.data
         password = form.password.data
+        print(rol)
         # Comprobamos que no hay ya un usuario con ese email
         user = User.get_by_email(email)
         if user is not None:
             error = f'El email {email} ya está siendo utilizado por otro usuario'
         else:
             # Creamos el usuario y lo guardamos
-            user = User(name=name,lastname=lastname, email=email)
+            user = User(name=name,lastname=lastname, lastname2=lastname2, local_phone=local_phone,mobile_phone=mobile_phone, email=email,key_elector=key_lector,status=status,rol_id=rol)
             user.set_password(password)
             user.save()
             # Enviamos un email de bienvenida
-            send_email(subject='Bienvenid@ al projectUGT',
-                       sender=current_app.config['DONT_REPLY_FROM_EMAIL'],
-                       recipients=[email, ],
-                       text_body=f'Hola {name}, bienvenid@ al project de Flask',
-                       html_body=f'<p>Hola <strong>{name}</strong>, bienvenid@ al project de Flask</p>')
+            # send_email(subject='Bienvenid@ al projectUGT',
+            #            sender=current_app.config['DONT_REPLY_FROM_EMAIL'],
+            #            recipients=[email, ],
+            #            text_body=f'Hola {name}, bienvenid@',
+            #            html_body=f'<p>Hola <strong>{name}</strong>, bienvenid@ al project de UGT</p>')
             # Dejamos al usuario logueado
-            login_user(user, remember=True)
+            # login_user(user, remember=True)
             next_page = request.args.get('next', None)
             if not next_page or url_parse(next_page).netloc != '':
                 next_page = url_for('public.index')
@@ -48,7 +59,7 @@ def show_signup_form():
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('public.index'))
+        return redirect(url_for('admin.index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.get_by_email(form.email.data)

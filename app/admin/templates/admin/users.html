@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block content %}
+<div>
+  <button class="register"><a href="{{ url_for('auth.show_signup_form') }}">Registrar</a></button>
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
     <thead class="table-dark">
@@ -27,7 +30,7 @@
             <tr>
                 <a href="">
 
-                    <th scope="row">ROL</th>
+                    <th scope="row">{{user.rol_id}}</th>
                     <td>{{ user.name }}</td>
                     <td>{{ user.lastname }}</td>
                     <td>{{ user.lastname2 }}</td>

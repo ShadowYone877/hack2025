@@ -64,6 +64,19 @@ sup,
 sub {
     line-height: 0
 }
+a{
+    text-decoration: none !important;
+}
+
+.register a{
+    color: var(--white);
+}
+
+.register a:hover{
+    color: var(--white);
+    opacity: .75;
+}
+
 tbody > tr > td > a{
     padding-right: 10px;
 }

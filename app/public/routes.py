@@ -23,7 +23,8 @@ logger = logging.getLogger(__name__)
 @public_bp.route("/")
 def index():
     print(current_user.is_authenticated)
-    if current_user.is_authenticated:
+    print(current_user.rol_id)
+    if current_user.is_authenticated and current_user.rol_id in [1]:
         return redirect(url_for('admin.index'))
     else:
         # return redirect(url_for('auth.login'))

@@ -7,7 +7,7 @@ from flask import render_template, redirect, url_for, abort, current_app
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 
-from app.auth.decorators import admin_required
+from app.auth.decorators import admin_required, gestorDBA_required
 from app.auth.models import User
 from app.models import Post
 from . import admin_bp
@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 @admin_bp.route("/admin/")
 @login_required
-@admin_required
+@gestorDBA_required
 def index():
     return render_template("admin/index.html")
 
