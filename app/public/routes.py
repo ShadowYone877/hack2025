@@ -22,13 +22,13 @@ logger = logging.getLogger(__name__)
 
 @public_bp.route("/")
 def index():
-    print(current_user.is_authenticated)
-    print(current_user.rol_id)
-    if current_user.is_authenticated and current_user.rol_id in [1]:
+    # print(current_user.is_authenticated)
+    # print(current_user.rol_id)
+    if current_user.is_authenticated:
         return redirect(url_for('admin.index'))
-    else:
-        # return redirect(url_for('auth.login'))
-        return render_template('public/index.html')
+    # else:
+        # return redirect(url_for('public.index'))
+    return render_template('public/index.html')
 
 
 # @public_bp.route("/p/<string:slug>/", methods=['GET', 'POST'])

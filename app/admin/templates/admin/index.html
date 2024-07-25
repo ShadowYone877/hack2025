@@ -1,12 +1,17 @@
 {% extends "base_template.html" %}
-
 {% block title %}
-    ProjectUGT | Admin
+ProjectUGT | Admin
+{% endblock %}
+{% block header %}
+<header>
+    {% include "header.html" %}
+</header>
 {% endblock %}
 
 {% block content %}
-    <ul>
-        <li><a href="{{ url_for('admin.list_posts') }}">Roles</a></li>
-        <li><a href="{{ url_for('admin.list_users') }}">Usuarios</a></li>
-    </ul>
+<ul >
+    <li><a href="{{ url_for('admin.list_posts') }}">Roles</a></li>
+    <li><a href="{{ url_for('admin.list_users') }}">Usuarios</a></li>
+    <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+</ul>
 {% endblock %}

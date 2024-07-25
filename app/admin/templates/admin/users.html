@@ -3,60 +3,81 @@
 {% block title %}
     Listado de usuarios
 {% endblock %}
-
-{% block content %}
-<div>
-  <button class="register"><a href="{{ url_for('auth.show_signup_form') }}">Registrar</a></button>
-</div>
-<div class="table-responsive">
-<table class="table table-striped">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Rol</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido Paterno</th>
-        <th scope="col">Apellido Materno</th>
-        <th scope="col">Telefono</th>
-        <th scope="col">Celular</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Clave elector</th>
-        <th scope="col">Status</th>
-        <th scope="col">Operaciones</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <!-- <li><a href="{{ url_for('admin.update_user_form', user_id=user.id) }}">{{ user.name }}<span>{{ user.lastname}}</a> (Admin: {{ user.is_admin}})</li> -->
-            <tr>
-                <a href="">
-
-                    <th scope="row">{{user.rol_name}}</th>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.lastname }}</td>
-                    <td>{{ user.lastname2 }}</td>
-                    <td>{{ user.local_phone }}</td>
-                    <td>{{ user.mobile_phone }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.key_elector }}</td>
-                    {% if user.status==1 %}
-                    <td>Activo</td>
-                    {% else %}
-                    <td>Inactivo</td>
-                    {% endif %}
-                    <td><a href="{{ url_for('admin.update_user_form', user_id=user.id) }}"><i class="fa-solid fa-book"></i></a><a href="http://"><i class="fa-solid fa-pen-to-square"></i></a><a href="http://"><i class="fa-solid fa-trash"></i></a></td>
-                </a>
-              </tr>
-
-
-    {% endfor %}
-      
-     
-    </tbody>
-  </table>
-</div>
-    <!-- <ul>
-    {% for user in users %}
-        <li><a href="{{ url_for('admin.update_user_form', user_id=user.id) }}">{{ user.name }}<span>{{ user.lastname}}</a> (Admin: {{ user.is_admin}})</li>
-    {% endfor %}
-    </ul> -->
+{% block header %}
+<header>
+    {% include "header.html" %}
+</header>
 {% endblock %}
+{% block content %}
+<main>
+<section class="grid-users-admin">
+  <div class="container-button-register-admin">
+    <button class="secButton"><a href="{{ url_for('auth.show_signup_form') }}">Registrar</a></button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Rol</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido Paterno</th>
+          <th scope="col">Apellido Materno</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Celular</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Clave elector</th>
+          <th scope="col">Status</th>
+          <th scope="col">Operaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in user_pagination.items %}
+        <!-- <li><a href="{{ url_for('admin.update_user_form', user_id=user.id) }}">{{ user.name }}<span>{{ user.lastname}}</a> (Admin: {{ user.is_admin}})</li> -->
+          <tr>
+            <a href="">
+              
+              <th scope="row">{{user.rol_name}}</th>
+              <td>{{ user.name }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.lastname2 }}</td>
+              <td>{{ user.local_phone }}</td>
+              <td>{{ user.mobile_phone }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.key_elector }}</td>
+              {% if user.status==1 %}
+              <td>Activo</td>
+              {% else %}
+              <td>Inactivo</td>
+              {% endif %}
+              <td><a href="{{ url_for('admin.update_user_form', user_id=user.id) }}"><i class="fa-solid fa-book"></i></a><a href="http://"><i class="fa-solid fa-pen-to-square"></i></a><a href="http://"><i class="fa-solid fa-trash"></i></a></td>
+            </a>
+          </tr>
+          
+          
+          {% endfor %}
+          
+          
+        </tbody>
+      </table>
+    </div>
+    <div class=pagination>
+      {%- for page in user_pagination.iter_pages() %}
+          {% if page %}
+              {% if page != user_pagination.page %}
+                  <a href="{{ url_for('admin.list_users', page=page) }}">{{ page }}</a>
+              {% else %}
+                  <strong>{{ page }}</strong>
+              {% endif %}
+          {% else %}
+              <span class=ellipsis>…</span>
+          {% endif %}
+      {%- endfor %}
+  </div>
+    <!-- <ul>
+      {% for user in users %}
+      <li><a href="{{ url_for('admin.update_user_form', user_id=user.id) }}">{{ user.name }}<span>{{ user.lastname}}</a> (Admin: {{ user.is_admin}})</li>
+        {% endfor %}
+      </ul> -->
+    </section>
+    </main>
+      {% endblock %}

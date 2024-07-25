@@ -1,0 +1,12 @@
+.grid-users-admin{
+    margin-top: 18vh;
+}
+.container-button-register-admin{
+    display: flex;
+    justify-content: end;
+    margin: 10px 10px;
+}
+
+.table-responsive {
+    margin: 0 10px;
+}

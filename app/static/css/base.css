@@ -1,8 +1,10 @@
 @import url(login.css);
 @import url(inicio.css);
+@import url(header.css);
+@import url(admin.css);
 :root {
     --primary-color: #231f20;
-    --secondary-color: rgba(172, 22, 64, 0.918);
+    --secondary-color: #8B0000;
     --gray_base-color: #e1e1e1;
     --form_card-color1: #fbfbfb;
     --text_box-color: #f9cbd0;

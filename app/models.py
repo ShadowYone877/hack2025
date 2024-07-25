@@ -2,8 +2,20 @@ import datetime
 
 from slugify import slugify
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.sql import text
 
 from app import db
+
+
+class ModelsUGT:
+    def consultRoles():
+        session = db.session()
+        cursor = session.execute(text("SELECT a.*, b.rol_name from User a inner join Rol b on a.rol_id = b.id ;"))
+        results_as_dict = cursor.mappings().all()
+        # print(results_as_dict)
+        # print("ee",cursor)
+
+
 
 class Rol(db.Model):
     __tablename__ = 'Rol'

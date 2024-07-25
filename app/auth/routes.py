@@ -51,7 +51,7 @@ def show_signup_form():
             # login_user(user, remember=True)
             next_page = request.args.get('next', None)
             if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('public.index')
+                next_page = url_for('admin.list_users')
             return redirect(next_page)
     return render_template("auth/signup_form.html", form=form, error=error)
 
@@ -59,7 +59,7 @@ def show_signup_form():
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('admin.index'))
+        return redirect(url_for('admin.list_user'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.get_by_email(form.email.data)

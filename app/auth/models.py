@@ -2,8 +2,11 @@
 
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.orm import relationship 
+from sqlalchemy.sql import text
 
 from app import db
+from app import models
 
 class User(db.Model, UserMixin):
 
@@ -20,6 +23,7 @@ class User(db.Model, UserMixin):
     status = db.Column(db.Integer, default=1)
     password = db.Column(db.String(256), nullable=False)
     rol_id = db.Column(db.Integer, db.ForeignKey('Rol.id', ondelete='CASCADE'), nullable=False)
+    rol = relationship("Rol", lazy="joined", innerjoin=True)
     is_admin = db.Column(db.Boolean, default=False)
 
     def __init__(self, name, lastname,lastname2, email,local_phone,mobile_phone,key_elector,status,rol_id):
@@ -62,3 +66,14 @@ class User(db.Model, UserMixin):
     @staticmethod
     def get_all():
         return User.query.all()
+    
+    @staticmethod
+    def all_paginated(page=1, per_page=10):
+        session = db.session()
+        cursor = session.execute(text("SELECT a.*, b.rol_name from User a inner join Rol b on a.rol_id = b.id ;"))
+        results_as_dict = cursor.mappings().all()
+        # return session.query(User, Rol).filter(Customer.id == Invoice.custid).all().\
+        # return results_as_dict.\
+        # return User.query.order_by(User.rol_id.asc()).\
+        return User.query.join(models.Rol,User.rol_id==models.Rol.id).all().\
+            paginate(page=page, per_page=per_page, error_out=False)

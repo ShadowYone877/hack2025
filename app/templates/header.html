@@ -1,0 +1,27 @@
+{% block nav %}
+<nav>
+    <input type="checkbox" id="Mostrar">
+    <div class="Logotipo">
+        Nombre del Militante
+    </div>
+    <ul class="menu_horizontal">
+        <li>
+            <a herf="#">Datos del Usuario</a>
+            <ul class="menu_vertical">
+                <li><a href="{{url_for('admin.index')}}">Visualizar datos</a></li>
+                <li><a href="{{url_for('admin.index')}}">Cambiar Contraseña</a></li>
+                <li><a href="{{url_for('admin.index')}}" onclick="mostrarEdicion()">Editar datos</a></li>
+            </ul>
+        </li>
+        <li><a href="{{url_for('admin.index')}}" onclick="mostrarComite()">Comite</a></li>
+        <li><a href="{{url_for('admin.index')}}">Evento</a></li>
+        <li><a href="{{url_for('admin.list_users')}}" onclick="mostrarComite() ">Admin</a></li>
+        <li><a href="{{url_for('auth.logout')}}" onclick="mostrarLogOut()">Cerrar sesión</a></li>
+    </ul>
+    <label for="Mostrar" class="Barra_íconos">
+        <div class="Línea"></div>
+        <div class="Línea"></div>
+        <div class="Línea"></div>
+    </label>
+</nav>
+{% endblock %}

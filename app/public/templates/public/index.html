@@ -2,28 +2,40 @@
 {% block title %}Inicio{% endblock %}
 {% block content %}
 <main>
-        <section class="seccionGral">
-            <!-- * Bloque para iniciar sesion-->
-            <section class="login">
-              <h1 class="titulo">Militancia</h1>
-            <button><a href="{{ url_for('auth.login') }}">Iniciar sesión</a></button>
-            </p>
-            <button class="secButton">Registrarse</button>
-          </section>
-          <!-- * Bloque de seccion informacion-->
-          <section class="secciones">
-              <legend><header><h2>Formación</h2></header></legend>
-          </section>
-    
-          <!-- * Bloque de seccion de militancia-->
-          <section class="secciones">
-              <legend><header><h2>Militancia</h2></header></legend>
-          </section>
-    
-          <!-- * Bloque de seccion de avisos-->
-          <section class="secciones">
-              <legend><header><h2>Avisos</h2></header></legend>
-          </section>
+    <section class="seccionGral">
+        <!-- * Bloque para iniciar sesion-->
+        <section class="login">
+            <h1 class="titulo">Militancia</h1>
+            <button class="secButton"><a href="{{ url_for('auth.login') }}">Iniciar sesión</a></button>
+
+            <!-- <button class="secButton">Registrarse</button> -->
         </section>
-    </main>
+        <!-- * Bloque de seccion informacion-->
+        <section class="secciones">
+            <legend>
+                <header>
+                    <h2>Formación</h2>
+                </header>
+            </legend>
+        </section>
+
+        <!-- * Bloque de seccion de militancia-->
+        <section class="secciones">
+            <legend>
+                <header>
+                    <h2>Militancia</h2>
+                </header>
+            </legend>
+        </section>
+
+        <!-- * Bloque de seccion de avisos-->
+        <section class="secciones">
+            <legend>
+                <header>
+                    <h2>Avisos</h2>
+                </header>
+            </legend>
+        </section>
+    </section>
+</main>
 {% endblock %}

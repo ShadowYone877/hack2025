@@ -10,7 +10,7 @@
 .us {
     /*el texto de usuario*/
     text-align: center;
-    color: rgba(172, 22, 64, 0.918);
+    color: var(--secondary-color);
 }
 
 
@@ -22,7 +22,7 @@
     width: 90%;
     /*ancho del elemento*/
     max-width: 300px;
-    background: rgba(172, 22, 64, 0.918);
+    background: var(--secondary-color);
     padding: 15px;
     /*es el espacio que existe entre el texto y recuadro*/
     align-items: center;
@@ -36,7 +36,7 @@
     left: 500px;
     top: 50px;
     text-align: center;
-    color: rgba(172, 22, 64, 0.918);
+    color: var(--secondary-color);
     width: 90%;
     max-width: 300px;
     background: #fff;
@@ -78,12 +78,19 @@ input::placeholder {
 .butt {
     /*boton de iniciar sesion*/
     text-align: center;
-    background-color: rgba(172, 22, 64, 0.918);
+    background-color: var(--secondary-color);
     color: white;
     padding: 10px;
 
 }
 
 .fas.fa-check-circle {
-    color: rgba(172, 22, 64, 0.918);
+    color: var(--secondary-color);
+}
+
+.container-items-login{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
 }

@@ -7,8 +7,7 @@
     <div class="cont">
         <h1 style> Bienvenido <br><br> Inicio militantes</style>
         </h1>
-        <h5 style>Crear una cuenta </style>
-        </h5>
+        
     </div>
 </div>
 <div class="contenedor">
@@ -18,28 +17,33 @@
         <form action="" method="post" novalidate>
             {{ form.hidden_tag() }}
 
-            <div>
-                <i class="fa-solid fa-user"></i>
-                {{ form.email.label }}
-                {{ form.email(class_="form-control-text")}}<br>
+            <div class="container-items-login">
+                <div>
+
+                    <i class="fa-solid fa-user"></i>
+                    {{ form.email.label }}
+                </div>
+                {{ form.email(class_="form-control-text")}}
                 {% for error in form.email.errors %}
-                <h1 style="color: red;">{{ error }}</h1>
+                <span style="color: red;">{{ error }}</span>
                 {% endfor %}
             </div>
             <!--fas indica que se usando la categoría "Solid" de Font Awesome y fa-user es el nombre de nuestro icono que stamos utilizando-->
             <!-- <label><input type="text" name="Nombre" placeholder="Nombre"></label> -->
             <!--placeholder se refiere a texto adicional-->
 
-            <div>
+            <div class="container-items-login">
+                <div>
                 <i class="fa-solid fa-lock"></i>
                 {{ form.password.label }}
-                {{ form.password(class_="form-control-text")}}<br>
+                </div>
+                {{ form.password(class_="form-control-text")}}
                 {% for error in form.password.errors %}
                 <span style="color: red;">{{ error }}</span>
                 {% endfor %}
             </div>
-            <div>
-                {{ form.submit(class_="butt") }}
+            <div class="container-items-login">
+                {{ form.submit(class_="secButton") }}
             </div>
             <!-- <label><input type="text" password="Contraseña" placeholder="Contraseña"></label> -->
 

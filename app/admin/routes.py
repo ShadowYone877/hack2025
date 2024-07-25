@@ -3,15 +3,16 @@
 import logging
 import os
 
-from flask import render_template, redirect, url_for, abort, current_app
+from flask import render_template, redirect, url_for, abort, current_app, request
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 
 from app.auth.decorators import admin_required, gestorDBA_required
 from app.auth.models import User
-from app.models import Post
+from app.models import Post, ModelsUGT
 from . import admin_bp
 from .forms import PostForm, UserAdminForm
+
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +21,8 @@ logger = logging.getLogger(__name__)
 @login_required
 @gestorDBA_required
 def index():
+    model=ModelsUGT.consultRoles()
+    print(model)
     return render_template("admin/index.html")
 
 
@@ -106,9 +109,16 @@ def delete_post(post_id):
 @login_required
 @gestorDBA_required
 def list_users():
-    users = User.get_all()
-    print(users)
-    return render_template("admin/users.html", users=users)
+    # users = User.get_all()
+    logger.info('Mostrando todos los usuarios')
+    page = int(request.args.get('page', 1))
+    user_pagination = User.all_paginated(page, 10)
+    for user in user_pagination:
+
+        print(user)
+    # return render_template("public/index.html", post_pagination=post_pagination)
+    # print(users)
+    return render_template("admin/users.html", user_pagination =user_pagination )
 
 
 @admin_bp.route("/admin/user/<int:user_id>/", methods=['GET', 'POST'])
