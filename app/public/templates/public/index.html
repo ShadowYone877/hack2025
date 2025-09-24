@@ -1,41 +1,95 @@
 {% extends "base_template.html" %}
-{% block title %}Inicio{% endblock %}
+{% block title %}Hackathon{% endblock %}
 {% block content %}
-<main>
-    <section class="seccionGral">
-        <!-- * Bloque para iniciar sesion-->
-        <section class="login">
-            <h1 class="titulo">Militancia</h1>
-            <button class="secButton"><a href="{{ url_for('auth.login') }}">Iniciar sesión</a></button>
+ <!--ENCABEZADO-->
+    <header class="header-container">
+        <h1>🚀 Hackaton ITIZ 2025</h1>
+        <nav class="nav-header">
+            <a class="in" href="inicio">Inicio</a>
+            <a class="cron" href="cron">Cronograma</a>
+            <a class="registrer" href="reg">Registro</a>
+        </nav>
+    </header>
+    <main>
+        <!--PARTE PRINCIPAL DE LA VISTA PARA EL USUARIO-->
+        <section>
 
-            <!-- <button class="secButton">Registrarse</button> -->
-        </section>
-        <!-- * Bloque de seccion informacion-->
-        <section class="secciones">
-            <legend>
-                <header>
-                    <h2>Formación</h2>
-                </header>
-            </legend>
+            <div class="container_main">
+                <h1>Hackaton ITIZ</h1>
+            </div>
+            <div class="container_leading">
+
+                <p class="info">32 horas para crear el futuro<br><br>
+                    Únete a desarrolladores, diseñadores y emprendedores en el evento de innovación más
+                    grande del año.¡Construye, aprende y gana increíbles premios!</p>
+
+            </div>
+            </div>
+            <!-- CONTADOR EN FORMATO TEXTO (días, horas, minutos, segundos) -->
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">25</div>
+                    <div class="countdown-label">Días</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Horas</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutos</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Segundos</div>
+                </div>
+            </div>
+
+            <a href="#registro" class="cta-button">¡Inscríbete Ahora!</a>
+            </div>
+            <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
         </section>
 
-        <!-- * Bloque de seccion de militancia-->
-        <section class="secciones">
-            <legend>
-                <header>
-                    <h2>Militancia</h2>
-                </header>
-            </legend>
-        </section>
+        <section id="cronograma" class="fade-in-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">📅</span>
+                    Cronograma del Evento
+                </h2>
 
-        <!-- * Bloque de seccion de avisos-->
-        <section class="secciones">
-            <legend>
-                <header>
-                    <h2>Avisos</h2>
-                </header>
-            </legend>
+                <div class="timeline">
+                    <div class="step hidden">
+                        <div class="bubble b1">
+                            <span class="step-number">1</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Inscripciones</h3>
+                            <p class="muted">21 de septiembre &ndash; 24 de octubre</p>
+                        </div>
+                    </div>
+
+                    <div class="step hidden">
+                        <div class="bubble b2">
+                            <span class="step-number">2</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Confirmación de equipos</h3>
+                            <p class="muted">28 de octubre &ndash; 31 de octubre</p>
+                        </div>
+                    </div>
+
+                    <div class="step hidden">
+                        <div class="bubble b3">
+                            <span class="step-number">3</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Hackathon</h3>
+                            <p class="muted">6 de noviembre &ndash; 7 de noviembre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-    </section>
-</main>
+    </main>
 {% endblock %}
