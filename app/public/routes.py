@@ -8,6 +8,7 @@ from flask_login import current_user
 # from app.models import Post, Comment
 from . import public_bp
 from .forms import CommentForm
+from app import db
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +23,12 @@ logger = logging.getLogger(__name__)
 
 @public_bp.route("/")
 def index():
+    query = db.cursor(dictionary=True)
+    query.excecute("SELECT * FROM institucion;")
+    result = query.fetchall()
+    query.close()
+    return result
+
     # print(current_user.is_authenticated)
     # print(current_user.rol_id)
     # if current_user.is_authenticated:
