@@ -8,7 +8,7 @@ from app.common.mail import send_email
 from . import auth_bp
 from .forms import SignupForm, LoginForm
 from .models import User
-from app.models import Rol
+# from app.models import Rol
 
 
 @auth_bp.route("/signup/", methods=["GET", "POST"])

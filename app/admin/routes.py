@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 
 from app.auth.decorators import admin_required, gestorDBA_required
 from app.auth.models import User
-from app.models import Post, ModelsUGT
+# from app.models import Post, ModelsUGT
 from . import admin_bp
 from .forms import PostForm, UserAdminForm
 

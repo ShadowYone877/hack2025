@@ -5,7 +5,7 @@ import logging
 from flask import abort, render_template, redirect, url_for, request, current_app
 from flask_login import current_user
 
-from app.models import Post, Comment
+# from app.models import Post, Comment
 from . import public_bp
 from .forms import CommentForm
 
@@ -24,8 +24,8 @@ logger = logging.getLogger(__name__)
 def index():
     # print(current_user.is_authenticated)
     # print(current_user.rol_id)
-    if current_user.is_authenticated:
-        return redirect(url_for('admin.index'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('admin.index'))
     # else:
         # return redirect(url_for('public.index'))
     return render_template('public/index.html')
