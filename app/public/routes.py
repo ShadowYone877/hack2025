@@ -1,4 +1,4 @@
- 
+from flask import jsonify
 
 import logging
 
@@ -8,20 +8,36 @@ from flask_login import current_user
 # from app.models import Post, Comment
 from . import public_bp
 from .forms import CommentForm
+from app import db
 
 logger = logging.getLogger(__name__)
 
 
-# @public_bp.route("/")
-# def index():
+@public_bp.route("/")
+def index():
 #     logger.info('Mostrando los posts del blog')
 #     page = int(request.args.get('page', 1))
 #     per_page = current_app.config['ITEMS_PER_PAGE']
 #     post_pagination = Post.all_paginated(page, per_page)
-#     return render_template("public/index.html", post_pagination=post_pagination)
+    return render_template("public/index.html")
 
 @public_bp.route("/")
 def index():
+    # print(current_user.is_authenticated)
+    # print(current_user.rol_id)
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('admin.index'))
+    # else:
+        # return redirect(url_for('public.index'))
+    return render_template('public/index.html')
+
+@public_bp.route("/dataBase")
+def dataBase():
+    query = db.cursor(dictionary=True)
+    query.execute("SELECT * FROM institucion;")
+    result = query.fetchall()
+    query.close()
+    return result
     # print(current_user.is_authenticated)
     # print(current_user.rol_id)
     # if current_user.is_authenticated:
