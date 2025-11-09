@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hack2025</title>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -20,43 +22,20 @@
                         <h3 class="panel-title">Escuelas</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="thumbnail">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg" alt="Escuela 1">
-                                    <div class="caption">
-                                        <h3>Escuela 1</h3>
-                                        <p>Descripción</p>
-                                        <p><a href="#" class="btn btn-primary" role="button">Más información</a></p>
-                                    </div>
-                                </div>
+                        
+                        <div class="row" id="escuelas-row">
                             </div>
-                            
-                            <!-- <div class="col-md-4">
-                                ...
-                            </div> -->
-                            
-                            <div class="col-md-4">
-                                <div class="thumbnail">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg" alt="Escuela 1">
-                                    <div class="caption">
-                                        <h3>Escuela 2</h3>
-                                        <p>Descripción</p>
-                                        <p><a href="#" class="btn btn-primary" role="button">Más información</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
-                <!--
-                {% for post in posts %}
-                {{ post.title }}
-                {% endfor %}
-                -->
             </div>
         </div>
     </div>
-    <script src="getdb.js"></script>    
+    <script>
+        console.log(results)
+        function getDataBase(){
+            
+        }
+    </script>    
 </body>
-</html> 
+</html>
