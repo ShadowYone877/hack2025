@@ -1,6 +1,7 @@
-from flask import jsonify
+from flask import jsonify, json
 
 import logging
+from sqlalchemy import text 
 
 from flask import abort, render_template, redirect, url_for, request, current_app
 from flask_login import current_user
@@ -21,30 +22,57 @@ def index():
 #     post_pagination = Post.all_paginated(page, per_page)
     return render_template("public/index.html")
 
-@public_bp.route("/")
-def index():
-    # print(current_user.is_authenticated)
-    # print(current_user.rol_id)
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('admin.index'))
-    # else:
-        # return redirect(url_for('public.index'))
-    return render_template('public/index.html')
+@public_bp.route("/getEscuela")
+def getEscuela():
+    print("Hola")
+    
+    # Esta es la sintaxis correcta de Python: claves entre comillas
+    esc = [
+        {
+            "id": 1,
+            "name": "Escuela 1",
+            "description": "Descripción",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg",
+        }, 
+        {
+            "id": 2,
+            "name": "Escuela 2",
+            "description": "Descripción",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg"
+        }, 
+               {
+            "id": 3,
+            "name": "Escuela 3",
+            "description": "Descripción",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg"
+        }
+    ]
+
+    # Devuelve la lista como una respuesta JSON
+    return jsonify(esc)
+
+# app/public/routes.py
 
 @public_bp.route("/dataBase")
 def dataBase():
-    query = db.cursor(dictionary=True)
-    query.execute("SELECT * FROM institucion;")
-    result = query.fetchall()
-    query.close()
-    return result
-    # print(current_user.is_authenticated)
-    # print(current_user.rol_id)
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('admin.index'))
-    # else:
-        # return redirect(url_for('public.index'))
-    return render_template('public/index.html')
+    # Usar db.session.execute para consultas SQL directas
+    try:
+        # Usa db.text() si no es Flask-SQLAlchemy 3.x
+        
+        # Ejecutar la consulta SQL
+        result_proxy = db.session.execute(text("SELECT * FROM institucion;"))
+        # print(result_proxy.fetchall())
+        # Convertir los resultados a una lista de diccionarios (similar a cursor(dictionary=True))
+        # results = [dict(row) for row in result_proxy.mappings()]
+        #print (results)
+        results = result_proxy.fetchall()
+        print(results)
+        return json.dumps(results, indent = 2) # Flask convertirá la lista de diccionarios a JSON
+        
+    except Exception as e:
+        # Manejar errores de la base de datos
+        print(f"Error de base de datos: {e}")
+        return {"error": "No se pudo conectar o ejecutar la consulta"}, 500
 
 
 
