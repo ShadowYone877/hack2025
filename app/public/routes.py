@@ -63,16 +63,21 @@ def dataBase():
         result_proxy = db.session.execute(text("SELECT * FROM institucion;"))
         # print(result_proxy.fetchall())
         # Convertir los resultados a una lista de diccionarios (similar a cursor(dictionary=True))
-        # results = [dict(row) for row in result_proxy.mappings()]
+        results = [dict(row) for row in result_proxy.mappings()]
         #print (results)
-        results = result_proxy.fetchall()
+        #results = result_proxy.fetchall()
         print(results)
-        return json.dumps(results, indent = 2) # Flask convertirá la lista de diccionarios a JSON
+        return (results)# Flask convertirá la lista de diccionarios a JSON
         
     except Exception as e:
         # Manejar errores de la base de datos
         print(f"Error de base de datos: {e}")
         return {"error": "No se pudo conectar o ejecutar la consulta"}, 500
+
+
+@public_bp.route("/getDataBase")
+def getDataBase():
+    return render_template("public/index2.html")
 
 
 
