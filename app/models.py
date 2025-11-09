@@ -1,6 +1,6 @@
 # app/models.py
 
-# 1. Importamos el único objeto 'db' que necesitamos
+
 #    Este objeto 'db' fue creado en tu app/__init__.py
 from . import db
 
@@ -9,8 +9,6 @@ class Institucion(db.Model):
     
     # El nombre exacto de la tabla en PostgreSQL
     __tablename__ = 'institucion'
-
-    # --- Columnas que coinciden con tu "CREATE TABLE" ---
     
     # id (serial primary key) se mapea a db.Integer, primary_key=True
     id = db.Column(db.Integer, primary_key=True)

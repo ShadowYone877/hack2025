@@ -31,6 +31,8 @@ def index():
     return render_template('public/index.html')
 
 
+
+
 # @public_bp.route("/p/<string:slug>/", methods=['GET', 'POST'])
 # def show_post(slug):
 #     logger.info('Mostrando un post')
