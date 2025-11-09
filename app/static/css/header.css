@@ -1,10 +1,8 @@
-
-*{
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
-}
 header{
     background-color: #f0e9dc;
-
+    border: none;
+}
+.container {
+  background-color: transparent !important;
+  padding: 0 !important;
 }
