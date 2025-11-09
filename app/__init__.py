@@ -33,6 +33,9 @@ def create_app(settings_module):
     db.init_app(app)
     migrate.init_app(app, db)
     mail.init_app(app)
+    
+    # Importación de los modelos para que SQLAlchemy los registre
+    from . import models
 
     # Registro de los filtros
     register_filters(app)

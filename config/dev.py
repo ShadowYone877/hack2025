@@ -5,4 +5,4 @@ from .default import *
 
 APP_ENV = APP_ENV_DEVELOPMENT
 
-SQLALCHEMY_DATABASE_URI = make_url('postgresql://admin:revadiva2025@82.180.163.244:5432/hackaton_itiz25')
+SQLALCHEMY_DATABASE_URI = 'postgresql://admin:123456@localhost:5432/hackton_2025'
