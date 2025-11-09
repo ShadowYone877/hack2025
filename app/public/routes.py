@@ -1,4 +1,4 @@
- 
+from flask import jsonify
 
 import logging
 
@@ -12,23 +12,42 @@ from .forms import CommentForm
 logger = logging.getLogger(__name__)
 
 
-# @public_bp.route("/")
-# def index():
+@public_bp.route("/")
+def index():
 #     logger.info('Mostrando los posts del blog')
 #     page = int(request.args.get('page', 1))
 #     per_page = current_app.config['ITEMS_PER_PAGE']
 #     post_pagination = Post.all_paginated(page, per_page)
-#     return render_template("public/index.html", post_pagination=post_pagination)
+    return render_template("public/index.html")
 
-@public_bp.route("/")
-def index():
-    # print(current_user.is_authenticated)
-    # print(current_user.rol_id)
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('admin.index'))
-    # else:
-        # return redirect(url_for('public.index'))
-    return render_template('public/index.html')
+@public_bp.route("/getEscuela")
+def getEscuela():
+    print("Hola")
+    
+    # Esta es la sintaxis correcta de Python: claves entre comillas
+    esc = [
+        {
+            "id": 1,
+            "name": "Escuela 1",
+            "description": "Descripción",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg",
+        }, 
+        {
+            "id": 2,
+            "name": "Escuela 2",
+            "description": "Descripción",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg"
+        }, 
+        {
+            "id": 3,
+            "name": "Escuela 3",
+            "description": "Descripción",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg"
+        }
+    ]
+
+    # Devuelve la lista como una respuesta JSON
+    return jsonify(esc)
 
 
 
