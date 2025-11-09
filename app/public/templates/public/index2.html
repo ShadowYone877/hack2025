@@ -52,19 +52,15 @@
                                 </div>
                             </div>
                         </div>
-                    `;
-                    
-                    // 7. Añade la nueva tarjeta al 'row'
-                    $escuelasRow.append(tarjetaHtml);
-                });
-
-            }).fail(function() {
-                // 8. Maneja el error si la API falla
-                $escuelasRow.html('<p class="text-danger text-center">No se pudieron cargar las escuelas.</p>');
-            });
-
-        });
-    </script>
-
+                    </div>
+                </div>
+                <!--
+                {% for post in posts %}
+                {{ post.title }}
+                {% endfor %}
+                -->
+            </div>
+        </div>
+    </div>    
 </body>
 </html>
