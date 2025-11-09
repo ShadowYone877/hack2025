@@ -13,6 +13,10 @@ main{
 body {
   background-color: #451f4c; 
 }
+.container-wide{max-width:1100px;margin:0 auto;padding:0 20px;}
+
+.section{margin:28px 0;}
+
 .card {
   text-align: center;
 }
@@ -93,5 +97,63 @@ body {
 
 .btn:hover {
   background-color: #2f1432 !important;
-  transform: scale(1.05); /* leve aumento al pasar el mouse */
+  transform: scale(1.05);
 }
+.trust {
+  display: flex;
+  justify-content: center;      
+  margin: 24px auto;
+  padding: 12px 0;
+}
+
+.trust ul {
+  display: flex;
+  justify-content: center;      
+align-items: center;
+  gap: 40px;                    
+  list-style: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f5f2ee;
+  font-family: 'The Seasons', serif;
+  font-weight: 600;
+  text-align: center;
+}
+.donate-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+border-radius:16px;padding:18px 20px;color:#f5f2ee}
+.donate-header{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+
+.donate-header img{width:52px;height:52px;border-radius:10px;object-fit:cover}
+
+.donate-title{font-family:'The Seasons',serif;margin:0 0 2px}
+
+.donate-wallet{background:rgba(0,0,0,.25);padding:4px 8px;border-radius:6px}
+
+.amount-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+
+.amount-chips button{background:#451f4c;color:#fff;border:0;padding:8px 14px;border-radius:999px}
+
+.amount-chips button.active{outline:2px solid #b18abf}
+
+.amount-custom{display:flex;align-items:center;background:#fff;border-radius:999px;color:#451f4c}
+
+.amount-custom span{padding-left:10px}
+
+.amount-custom input{border:0;background:transparent;padding:8px 12px;width:110px;outline:none;color:#451f4c}
+
+.payer-box input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.25);
+
+  background:rgba(255,255,255,.08);color:#fff}
+.donate-actions{display:flex;gap:10px;margin-top:12px}
+
+.btn{border-radius:10px;padding:10px 16px;font-weight:700}
+
+.btn-primary{background:#451f4c;color:#fff;border:0}
+
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff}
+
+.btn-link{background:transparent;border:0;color:#b18abf;text-decoration:underline}
+
+.donate-status{margin-top:12px;background:rgba(0,0,0,.25);padding:10px;border-radius:10px}
