@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Hack2025</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Hack2025</h1>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -20,42 +7,64 @@
                         <h3 class="panel-title">Escuelas</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="thumbnail">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg" alt="Escuela 1">
-                                    <div class="caption">
-                                        <h3>Escuela 1</h3>
-                                        <p>Descripción</p>
-                                        <p><a href="#" class="btn btn-primary" role="button">Más información</a></p>
-                                    </div>
-                                </div>
+                        
+                        <div class="row" id="escuelas-row">
                             </div>
-                            
-                            <!-- <div class="col-md-4">
-                                ...
-                            </div> -->
-                            
-                            <div class="col-md-4">
-                                <div class="thumbnail">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Escuela_1.jpg/320px-Escuela_1.jpg" alt="Escuela 1">
-                                    <div class="caption">
-                                        <h3>Escuela 2</h3>
-                                        <p>Descripción</p>
-                                        <p><a href="#" class="btn btn-primary" role="button">Más información</a></p>
-                                    </div>
+
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        // Espera a que la página esté lista
+        $(document).ready(function() {
+            
+            // 1. Selecciona el 'row' donde irán las escuelas
+            const $escuelasRow = $('#escuelas-row');
+
+            // 2. Muestra un mensaje de carga
+            $escuelasRow.html('<p class="text-center">Cargando escuelas...</p>');
+
+            // 3. Llama a tu API usando $.getJSON (un atajo de jQuery para esto)
+            $.getJSON('/getEscuela', function(escuelas) {
+                
+                // 4. Limpia el mensaje de "cargando"
+                $escuelasRow.empty();
+
+                // 5. Recorre cada escuela que vino en el JSON
+                $.each(escuelas, function(index, escuela) {
+                    
+                    // 6. Crea el HTML para la tarjeta (thumbnail)
+                    // (Esta es la misma estructura que tenías)
+                    const tarjetaHtml = `
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <img src="${escuela.image}" alt="${escuela.name}">
+                                <div class="caption">
+                                    <h3>${escuela.name}</h3>
+                                    <p>${escuela.description}</p>
+                                    <p><a href="#" class="btn btn-primary" role="button">Más información</a></p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!--
-                {% for post in posts %}
-                {{ post.title }}
-                {% endfor %}
-                -->
-            </div>
-        </div>
-    </div>    
+                    `;
+                    
+                    // 7. Añade la nueva tarjeta al 'row'
+                    $escuelasRow.append(tarjetaHtml);
+                });
+
+            }).fail(function() {
+                // 8. Maneja el error si la API falla
+                $escuelasRow.html('<p class="text-danger text-center">No se pudieron cargar las escuelas.</p>');
+            });
+
+        });
+    </script>
+
 </body>
-</html> 
+</html>

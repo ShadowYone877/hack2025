@@ -11,6 +11,9 @@ from .forms import CommentForm
 
 logger = logging.getLogger(__name__)
 
+@public_bp.route("/index2")
+def index2():
+    return render_template("public/index2.html")
 
 @public_bp.route("/")
 def index():
