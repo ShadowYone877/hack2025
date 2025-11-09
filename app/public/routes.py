@@ -31,6 +31,21 @@ def index():
         # return redirect(url_for('public.index'))
     return render_template('public/index.html')
 
+@public_bp.route("/dataBase")
+def dataBase():
+    query = db.cursor(dictionary=True)
+    query.execute("SELECT * FROM institucion;")
+    result = query.fetchall()
+    query.close()
+    return result
+    # print(current_user.is_authenticated)
+    # print(current_user.rol_id)
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('admin.index'))
+    # else:
+        # return redirect(url_for('public.index'))
+    return render_template('public/index.html')
+
 
 
 
